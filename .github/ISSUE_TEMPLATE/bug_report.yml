@@ -1,0 +1,94 @@
+name: 🐛 Bug Report
+description: Сообщить об ошибке в работе HelpDesk/TaskTracker
+title: "[BUG]: "
+labels: ["bug", "triage"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Спасибо за сообщение об ошибке!
+        Пожалуйста, заполните форму как можно подробнее — это поможет нам быстрее воспроизвести и исправить проблему.
+
+  - type: input
+    id: contact
+    attributes:
+      label: Контактные данные
+      description: Как с вами связаться, если потребуется уточнение?
+      placeholder: ex. email@example.com или Telegram @username
+    validations:
+      required: false
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: Что произошло?
+      description: Опишите, что вы делали и что пошло не так.
+      placeholder: "Например: при создании заявки с приоритетом «Высокий» страница выдаёт ошибку 500..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Ожидаемое поведение
+      description: Что должно было произойти?
+      placeholder: "Заявка должна была успешно создаться и появиться в списке..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Шаги воспроизведения
+      description: Опишите пошагово, как воспроизвести проблему.
+      placeholder: |
+        1. Войти как оператор
+        2. Перейти в раздел «Заявки»
+        3. Нажать «Создать заявку»
+        4. Выбрать приоритет «Высокий»
+        5. Нажать «Сохранить»
+        6. Увидеть ошибку
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Критичность
+      description: Насколько серьёзна проблема?
+      options:
+        - Блокирует работу (Critical)
+        - Серьёзная (Major)
+        - Незначительная (Minor)
+        - Косметическая (Cosmetic)
+      default: 1
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Версия приложения
+      description: Какую версию HelpDesk/TaskTracker вы используете?
+      placeholder: ex. 0.1.0
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Логи / вывод консоли
+      description: Вставьте релевантные фрагменты логов. Они автоматически отформатируются как код.
+      render: shell
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Подтверждение
+      description: Перед отправкой убедитесь, что проблема ещё не была описана в других Issue.
+      options:
+        - label: Я проверил существующие Issue и не нашёл дубликат
+          required: true
